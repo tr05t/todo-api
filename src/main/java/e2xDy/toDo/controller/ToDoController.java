@@ -28,7 +28,7 @@ public class ToDoController {
 
     @GetMapping(path = "{toDoId}", name = "getToDo")
     public @ResponseBody
-    Optional<ToDoModel> getToDo(@PathVariable Integer toDoId) {
+    Optional<ToDoModel> getToDo(@PathVariable final Integer toDoId) {
         return toDoRepository.findById(toDoId);
     }
 
@@ -44,7 +44,7 @@ public class ToDoController {
 
     @PutMapping(path = "{toDoId}", name = "updateToDo")
     public @ResponseBody
-    Optional<ToDoModel> updateToDo(@PathVariable Integer toDoId, @RequestBody ToDoModel toDoDetails) {
+    Optional<ToDoModel> updateToDo(@PathVariable final Integer toDoId, @RequestBody ToDoModel toDoDetails) {
         System.out.println(toDoRepository.findById(toDoId));
         if (toDoRepository.findById(toDoId).isPresent()) {
             ToDoModel toDo = toDoRepository.findById(toDoId).get();
@@ -58,7 +58,7 @@ public class ToDoController {
 
     @DeleteMapping(path = "{toDoId}", name = "deleteToDo")
     public @ResponseBody
-    boolean deleteToDo(@PathVariable Integer toDoId) {
+    boolean deleteToDo(@PathVariable final Integer toDoId) {
         if (toDoRepository.findById(toDoId).isPresent()) {
             ToDoModel toDo = toDoRepository.findById(toDoId).get();
             toDoRepository.delete(toDo);
