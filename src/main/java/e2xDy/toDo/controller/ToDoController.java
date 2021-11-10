@@ -1,5 +1,8 @@
-package e2xDy.toDo;
+package e2xDy.toDo.controller;
 
+import e2xDy.toDo.model.ToDoModel;
+import e2xDy.toDo.repository.ToDoRepository;
+import e2xDy.toDo.model.ToDoRequestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,25 +14,28 @@ import java.util.Optional;
 @RequestMapping(path = "/api/todo")
 public class ToDoController {
 
-    @Autowired
-    private ToDoRepository toDoRepository;
+    private final ToDoRepository toDoRepository;
+
+    public ToDoController(ToDoRepository toDoRepository) {
+        this.toDoRepository = toDoRepository;
+    }
 
     @GetMapping(path = "", name = "getToDos")
     public @ResponseBody
-    Iterable<ToDo> getAllToDos() {
+    Iterable<ToDoModel> getAllToDos() {
         return toDoRepository.findAll();
     }
 
     @GetMapping(path = "{toDoId}", name = "getToDo")
     public @ResponseBody
-    Optional<ToDo> getToDo(@PathVariable Integer toDoId) {
+    Optional<ToDoModel> getToDo(@PathVariable Integer toDoId) {
         return toDoRepository.findById(toDoId);
     }
 
     @PostMapping(path = "", name = "createToDo")
     public @ResponseBody
-    Optional<ToDo> createToDo(@RequestBody ToDoRequestModel toDoDetails) {
-        ToDo toDo = new ToDo();
+    Optional<ToDoModel> createToDo(@RequestBody ToDoRequestModel toDoDetails) {
+        ToDoModel toDo = new ToDoModel();
         toDo.setContent(toDoDetails.getContent());
         toDo.setDone(toDoDetails.getDone());
         toDoRepository.save(toDo);
@@ -38,10 +44,10 @@ public class ToDoController {
 
     @PutMapping(path = "{toDoId}", name = "updateToDo")
     public @ResponseBody
-    Optional<ToDo> updateToDo(@PathVariable Integer toDoId, @RequestBody ToDo toDoDetails) {
+    Optional<ToDoModel> updateToDo(@PathVariable Integer toDoId, @RequestBody ToDoModel toDoDetails) {
         System.out.println(toDoRepository.findById(toDoId));
         if (toDoRepository.findById(toDoId).isPresent()) {
-            ToDo toDo = toDoRepository.findById(toDoId).get();
+            ToDoModel toDo = toDoRepository.findById(toDoId).get();
             toDo.setContent(toDoDetails.getContent());
             toDo.setDone(toDoDetails.getDone());
             toDoRepository.save(toDo);
@@ -54,7 +60,7 @@ public class ToDoController {
     public @ResponseBody
     boolean deleteToDo(@PathVariable Integer toDoId) {
         if (toDoRepository.findById(toDoId).isPresent()) {
-            ToDo toDo = toDoRepository.findById(toDoId).get();
+            ToDoModel toDo = toDoRepository.findById(toDoId).get();
             toDoRepository.delete(toDo);
             return true;
         }
