@@ -7,6 +7,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: superSecrete
     volumes:
-      - ./dbData:/var/lib/mysql
+      - ./data/mariadb:/var/lib/mysql
     ports:
       - 3307:3306
