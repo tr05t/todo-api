@@ -1,8 +1,8 @@
-package e2xDy.toDo.service;
+package com.toDo.service;
 
-import e2xDy.toDo.model.ToDoModel;
-import e2xDy.toDo.model.ToDoRequestModel;
-import e2xDy.toDo.repository.ToDoRepository;
+import com.toDo.model.ToDoModel;
+import com.toDo.model.ToDoRequestModel;
+import com.toDo.repository.ToDoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

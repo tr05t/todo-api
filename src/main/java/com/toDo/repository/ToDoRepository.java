@@ -1,6 +1,6 @@
-package e2xDy.toDo.repository;
+package com.toDo.repository;
 
-import e2xDy.toDo.model.ToDoModel;
+import com.toDo.model.ToDoModel;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ToDoRepository extends CrudRepository<ToDoModel, Integer> {

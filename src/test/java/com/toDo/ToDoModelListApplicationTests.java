@@ -1,4 +1,4 @@
-package e2xDy.toDo;
+package com.toDo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

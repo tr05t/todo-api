@@ -1,4 +1,4 @@
-package e2xDy.toDo.model;
+package com.toDo.model;
 
 public class ToDoRequestModel {
     private String content;
