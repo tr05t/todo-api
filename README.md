@@ -13,13 +13,13 @@ Simple Java Spring App providing a REST API.
 
 - Starting a database instance:
     ```shell
-    docker-compose -f ./docker/docker-compose-mariaDb.yml -D up
+    docker-compose -f ./docker/docker-compose-mariadb.yml up -d
     ```
 
 
 - Starting a [Keycloak](https://www.keycloak.org/) instance:
     ```shell
-    docker-compose -f ./docker/docker-compose-keycloak.yml -D up
+    docker-compose -f ./docker/docker-compose-keycloak.yml up -d
     ```
 
   - Logging in into admin console of Keycloak: 
