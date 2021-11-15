@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  db:
+  maria-db:
     image: mariadb
     restart: always
     command: mysqld --default-authentication-plugin=mysql_native_password
@@ -8,5 +8,6 @@ services:
       MYSQL_ROOT_PASSWORD: superSecrete
     volumes:
       - ./data/mariadb:/var/lib/mysql
+      - ./prepare-mariadb.sql:/docker-entrypoint-initdb.d/init.sql:ro
     ports:
       - 3307:3306
