@@ -2,8 +2,8 @@
 
 Repositories:
 
-- https://github.com/Eddy1015/todo-app
-- https://github.com/Eddy1015/todo-api
+- https://github.com/tr05t/todo-app
+- https://github.com/tr05t/todo-api
 
 ---
 
